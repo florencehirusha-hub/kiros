@@ -151,12 +151,14 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  position: relative;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-shrink: 0;
 }
 
 .brand-logo {
@@ -185,17 +187,65 @@ p {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 26px;
+  justify-content: space-between;
+  flex: 1;
+  margin-left: 40px;
+  gap: 24px;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 28px;
   font-weight: 600;
   color: var(--navy);
 }
 
-.nav-links a:hover {
+.nav-center a {
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.nav-center a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+  transition: 0.3s ease;
+}
+
+.nav-center a:hover {
   color: var(--blue);
 }
 
-.nav-cta {
-  margin-left: 8px;
+.nav-center a:hover::after {
+  width: 100%;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-link {
+  color: var(--navy);
+  font-weight: 700;
+  padding: 10px 6px;
+  transition: 0.3s ease;
+}
+
+.login-link:hover {
+  color: var(--blue);
+}
+
+.signup-btn {
+  padding: 12px 22px;
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(10, 86, 181, 0.22);
 }
 
 .menu-toggle {
@@ -617,13 +667,6 @@ p {
 
 @media (max-width: 1024px) {
   .hero-grid,
-  .two-col,
-  .card-grid,
-  .steps {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .hero-grid,
   .two-col {
     grid-template-columns: 1fr;
   }
@@ -654,19 +697,41 @@ p {
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
     border-radius: 20px;
-    padding: 18px;
+    padding: 20px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    margin-left: 0;
   }
 
   .nav-links.show {
     display: flex;
   }
 
-  .nav-cta {
-    margin-left: 0;
+  .nav-center,
+  .nav-right {
     width: 100%;
-    text-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-center {
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .nav-right {
+    gap: 12px;
+  }
+
+  .login-link,
+  .signup-btn {
+    width: 100%;
+  }
+
+  .login-link {
+    padding: 12px 14px;
+    border: 1px solid rgba(4, 17, 59, 0.1);
+    border-radius: 12px;
   }
 
   .section {
