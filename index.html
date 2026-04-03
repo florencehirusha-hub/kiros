@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kairos - Home</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy:"#0B1F3A",
+        navySoft:"#1E3A8A",
+        blueAccent:"#3B82F6",
+        blueLight:"#93C5FD",
+        blueBg:"#EFF6FF"
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.logo { animation: float 3s infinite; }
+@keyframes float {50%{transform:translateY(-5px);}}
+
+.step.active {
+  background: linear-gradient(to right,#1E3A8A,#3B82F6);
+  color:white;
+}
+
+.card {
+  transition:0.3s;
+  cursor:pointer;
+}
+.card:hover {
+  transform:translateY(-5px);
+}
+.card.selected {
+  border:2px solid #3B82F6;
+  background:#EFF6FF;
+}
+
+.btn { transition:0.3s; }
+.btn:hover {
+  transform:scale(1.05);
+}
+
+/* DISABLED NAV */
+.disabled {
+  opacity:0.4;
+  cursor:not-allowed;
+}
+</style>
+</head>
+
+<body class="bg-white">
+
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<div class="w-64 bg-navy text-white p-5 flex flex-col justify-between">
+
+<div>
+
+  <div class="flex items-center gap-3 mb-10">
+    <img src="delta-strix-logo.png" class="logo w-12 h-12">
+    <div>
+      <h1 class="text-xl font-bold">Kairos</h1>
+      <p class="text-xs text-blueLight">AI Career Guide</p>
+    </div>
+  </div>
+
+  <div class="space-y-3">
+
+    <!-- ACTIVE -->
+    <div class="p-3 bg-navySoft rounded-lg flex gap-2">
+      <i data-lucide="home"></i> Home
+    </div>
+
+    <!-- DISABLED -->
+    <div class="p-3 disabled flex gap-2">
+      <i data-lucide="bar-chart"></i> Results
+    </div>
+
+    <div class="p-3 disabled flex gap-2">
+      <i data-lucide="book-open"></i> Research
+    </div>
+
+    <!-- ACTIVE LINKS -->
+    <div onclick="go('progress.html')" 
+    class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="clock"></i> Progress
+    </div>
+
+    <div onclick="go('account.html')" 
+    class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="user"></i> My Account
+    </div>
+
+  </div>
+
+</div>
+
+<div class="text-blueLight text-sm flex gap-2">
+  <i data-lucide="bookmark"></i> Saved Careers
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="flex-1 p-10">
+
+<h1 class="text-4xl font-bold text-navy mb-2">
+  Build Your Profile
+</h1>
+<p class="text-gray-500 mb-6">
+  Let’s personalize your career journey
+</p>
+
+<!-- STEPS -->
+<div class="flex gap-3 mb-6">
+  <div class="step active px-4 py-2 rounded-full" id="step1">1 Academic</div>
+  <div class="step px-4 py-2 rounded-full bg-blueBg" id="step2">2 Interests</div>
+  <div class="step px-4 py-2 rounded-full bg-blueBg" id="step3">3 Skills</div>
+</div>
+
+<!-- CONTENT -->
+<div class="bg-white border border-blue-100 rounded-xl p-6 shadow">
+
+<!-- ACADEMIC -->
+<div id="academic">
+
+<div class="grid grid-cols-2 gap-6 mb-6">
+  <select id="stream" class="p-3 border rounded-lg">
+    <option value="">Select Stream</option>
+    <option>Science</option>
+    <option>Commerce</option>
+    <option>Arts</option>
+  </select>
+
+  <select id="math" class="p-3 border rounded-lg">
+    <option value="">Math Level</option>
+    <option>Basic</option>
+    <option>Advanced</option>
+  </select>
+</div>
+
+<input id="results" class="w-full p-4 border rounded-lg" placeholder="A-7, B-1, C-1">
+
+<div class="flex justify-end mt-8">
+  <button onclick="nextStep()" 
+  class="btn bg-gradient-to-r from-navySoft to-blueAccent text-white px-6 py-3 rounded-lg">
+    Continue →
+  </button>
+</div>
+
+</div>
+
+<!-- INTERESTS -->
+<div id="interests" class="hidden">
+
+<h2 class="text-lg font-semibold text-navy mb-4">Select Your Interests</h2>
+
+<div class="grid grid-cols-3 gap-4">
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'interest')">💻 Technology</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'interest')">📊 Business</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'interest')">🏥 Medicine</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'interest')">⚙️ Engineering</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'interest')">🎨 Design</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'interest')">⚖️ Law</div>
+</div>
+
+<div class="flex justify-end mt-8">
+  <button onclick="nextStep()" 
+  class="btn bg-gradient-to-r from-navySoft to-blueAccent text-white px-6 py-3 rounded-lg">
+    Continue →
+  </button>
+</div>
+
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="hidden">
+
+<h2 class="text-lg font-semibold text-navy mb-4">Select Your Skills</h2>
+
+<div class="grid grid-cols-3 gap-4 mb-8">
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'skill')">Problem Solving</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'skill')">Coding</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'skill')">Communication</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'skill')">Creativity</div>
+<div class="card p-4 border rounded-lg" onclick="selectCard(this,'skill')">Leadership</div>
+</div>
+
+<div class="flex justify-end">
+  <button onclick="startAnalysis()" 
+  class="btn bg-gradient-to-r from-navySoft to-blueAccent text-white px-6 py-3 rounded-lg">
+    Start Analysis 🚀
+  </button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+lucide.createIcons();
+
+function go(p){
+  window.location.href = p;
+}
+
+let step = 1;
+
+function nextStep(){
+  step++;
+  if(step===2){
+    document.getElementById('academic').classList.add('hidden');
+    document.getElementById('interests').classList.remove('hidden');
+  }
+  if(step===3){
+    document.getElementById('interests').classList.add('hidden');
+    document.getElementById('skills').classList.remove('hidden');
+  }
+}
+
+function selectCard(el){
+  el.classList.toggle("selected");
+}
+
+function startAnalysis(){
+  window.location.href="results.html";
+}
+</script>
+
+</body>
+</html>

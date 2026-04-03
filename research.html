@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kairos - Research</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy:"#0B1F3A",
+        navySoft:"#1E3A8A",
+        blueAccent:"#3B82F6",
+        blueLight:"#93C5FD",
+        blueBg:"#EFF6FF"
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.card {
+  transition:0.3s;
+}
+.card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(59,130,246,0.2);
+}
+
+.btn {
+  transition:0.3s;
+}
+.btn:hover {
+  transform:scale(1.05);
+}
+
+.logo {
+  animation: float 3s infinite;
+}
+@keyframes float {
+  50% { transform: translateY(-5px); }
+}
+</style>
+
+</head>
+
+<body class="bg-white">
+
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<div class="w-64 bg-navy text-white p-5 flex flex-col justify-between">
+
+<div>
+  <div class="flex items-center gap-3 mb-10">
+    <img src="delta-strix-logo.png" class="logo w-12 h-12">
+    <div>
+      <h1 class="text-xl font-bold">Kairos</h1>
+      <p class="text-xs text-blueLight">AI Career Guide</p>
+    </div>
+  </div>
+
+  <div class="space-y-3">
+
+    <div onclick="go('index.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="home"></i> Home
+    </div>
+
+    <div onclick="go('results.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="bar-chart"></i> Results
+    </div>
+
+    <!-- ACTIVE -->
+    <div class="p-3 bg-navySoft rounded-lg flex gap-2">
+      <i data-lucide="book-open"></i> Research
+    </div>
+
+    <div onclick="go('progress.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="clock"></i> Progress
+    </div>
+
+    <div class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2">
+      <i data-lucide="user"></i> My Account
+    </div>
+
+  </div>
+</div>
+
+<div class="text-blueLight text-sm flex gap-2">
+  <i data-lucide="bookmark"></i> Saved Careers
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="flex-1 p-10">
+
+<div id="content"></div>
+
+</div>
+
+</div>
+
+<script>
+lucide.createIcons();
+
+function go(p){
+  window.location.href = p;
+}
+
+// GET SELECTED JOB
+const job = localStorage.getItem("selectedCareer");
+
+// DATA (YOU CAN EXPAND THIS LATER)
+const careers = {
+
+  "Software Engineer":{
+    desc:"💻 Develops software systems, apps, and websites.",
+    salary:"💰 Rs. 100K – 1.5M / year",
+    skills:["Coding","Problem Solving","Algorithms"],
+    roadmap:"📚 Learn programming → Build projects → Internship → Job",
+    demand:"📈 Very High Demand"
+  },
+
+  "Business Analyst":{
+    desc:"📊 Analyzes business data and improves processes.",
+    salary:"💰 Rs. 80K – 1.5M / year",
+    skills:["Communication","Data Analysis","Excel"],
+    roadmap:"📚 Learn business → Data tools → Internship",
+    demand:"📈 High Demand"
+  },
+
+  "Electrical Engineer":{
+    desc:"⚡ Works with electrical systems and hardware.",
+    salary:"💰 Rs. 70K – 2.5M / year",
+    skills:["Circuits","Math","Electronics"],
+    roadmap:"📚 Engineering degree → Lab work → Job",
+    demand:"📈 Medium Demand"
+  }
+
+};
+
+const data = careers[job];
+
+// UI RENDER
+document.getElementById("content").innerHTML = `
+<h1 class="text-4xl font-bold text-navy mb-4">${job}</h1>
+
+<p class="text-gray-600 mb-6">${data.desc}</p>
+
+<div class="grid grid-cols-3 gap-6">
+
+  <div class="card bg-white border border-blue-100 p-5 rounded-xl shadow">
+    <h2 class="font-semibold mb-2">💰 Salary</h2>
+    <p>${data.salary}</p>
+  </div>
+
+  <div class="card bg-white border border-blue-100 p-5 rounded-xl shadow">
+    <h2 class="font-semibold mb-2">📊 Demand</h2>
+    <p>${data.demand}</p>
+  </div>
+
+  <div class="card bg-white border border-blue-100 p-5 rounded-xl shadow">
+    <h2 class="font-semibold mb-2">🧠 Skills</h2>
+    <ul>
+      ${data.skills.map(s => `<li>• ${s}</li>`).join("")}
+    </ul>
+  </div>
+
+</div>
+
+<div class="card bg-white border border-blue-100 p-6 rounded-xl shadow mt-6">
+  <h2 class="font-semibold mb-2">🚀 Career Path</h2>
+  <p>${data.roadmap}</p>
+</div>
+
+<div class="flex justify-between mt-10">
+
+  <button onclick="go('results.html')" 
+  class="btn px-6 py-3 border border-blue-200 rounded-lg text-navy">
+    ← Back to Results
+  </button>
+
+  <button class="btn bg-blueAccent text-white px-6 py-3 rounded-lg">
+    Save Career ⭐
+  </button>
+
+</div>
+`;
+</script>
+
+</body>
+</html>

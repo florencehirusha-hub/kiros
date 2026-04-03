@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kairos - My Account</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy:"#0B1F3A",
+        navySoft:"#1E3A8A",
+        blueAccent:"#3B82F6",
+        blueLight:"#93C5FD",
+        blueBg:"#EFF6FF"
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.card {
+  transition:0.3s;
+}
+.card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(59,130,246,0.2);
+}
+
+.btn {
+  transition:0.3s;
+}
+.btn:hover {
+  transform:scale(1.05);
+}
+
+.logo {
+  animation: float 3s infinite;
+}
+@keyframes float {
+  50% { transform: translateY(-5px); }
+}
+</style>
+
+</head>
+
+<body class="bg-white">
+
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<div class="w-64 bg-navy text-white p-5 flex flex-col justify-between">
+
+<div>
+
+  <div class="flex items-center gap-3 mb-10">
+    <img src="delta-strix-logo.png" class="logo w-12 h-12">
+    <div>
+      <h1 class="text-xl font-bold">Kairos</h1>
+      <p class="text-xs text-blueLight">AI Career Guide</p>
+    </div>
+  </div>
+
+  <div class="space-y-3">
+
+    <div onclick="go('index.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="home"></i> Home
+    </div>
+
+    <div onclick="go('results.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="bar-chart"></i> Results
+    </div>
+
+    <div onclick="go('research.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="book-open"></i> Research
+    </div>
+
+    <div onclick="go('progress.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2 cursor-pointer">
+      <i data-lucide="clock"></i> Progress
+    </div>
+
+    <!-- ACTIVE -->
+    <div class="p-3 bg-navySoft rounded-lg flex gap-2">
+      <i data-lucide="user"></i> My Account
+    </div>
+
+  </div>
+
+</div>
+
+<div class="text-blueLight text-sm flex gap-2">
+  <i data-lucide="bookmark"></i> Saved Careers
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="flex-1 p-10">
+
+<h1 class="text-3xl font-bold text-navy mb-2">
+  My Account 👤
+</h1>
+
+<p class="text-gray-500 mb-8">
+  Manage your profile and preferences
+</p>
+
+<!-- PROFILE CARD -->
+<div class="card bg-white border border-blue-100 rounded-xl p-6 shadow mb-6">
+
+<div class="flex items-center gap-4">
+
+  <div class="w-16 h-16 bg-blueBg rounded-full flex items-center justify-center text-2xl">
+    👤
+  </div>
+
+  <div>
+    <h2 class="text-xl font-bold text-navy">Kasun Perera</h2>
+    <p class="text-gray-500">kasun@email.com</p>
+  </div>
+
+</div>
+
+</div>
+
+<!-- STATS -->
+<div class="grid grid-cols-3 gap-6 mb-6">
+
+<div class="card bg-white border p-5 rounded-xl shadow">
+  <p class="text-blueAccent">Saved Careers</p>
+  <h2 class="text-xl font-bold text-navy">3</h2>
+</div>
+
+<div class="card bg-white border p-5 rounded-xl shadow">
+  <p class="text-blueAccent">Completed Analysis</p>
+  <h2 class="text-xl font-bold text-navy">2</h2>
+</div>
+
+<div class="card bg-white border p-5 rounded-xl shadow">
+  <p class="text-blueAccent">Progress Level</p>
+  <h2 class="text-xl font-bold text-navy">Strong 📈</h2>
+</div>
+
+</div>
+
+<!-- EDIT PROFILE -->
+<div class="card bg-white border border-blue-100 rounded-xl p-6 shadow mb-6">
+
+<h2 class="text-lg font-semibold text-navy mb-4">
+  Edit Profile
+</h2>
+
+<div class="grid grid-cols-2 gap-6">
+
+<input class="p-3 border rounded-lg" placeholder="Full Name">
+<input class="p-3 border rounded-lg" placeholder="Email">
+
+<select class="p-3 border rounded-lg">
+  <option>Stream</option>
+  <option>Science</option>
+  <option>Commerce</option>
+  <option>Arts</option>
+</select>
+
+<select class="p-3 border rounded-lg">
+  <option>Math Level</option>
+  <option>Basic</option>
+  <option>Advanced</option>
+</select>
+
+</div>
+
+<button class="btn mt-6 bg-blueAccent text-white px-6 py-3 rounded-lg">
+  Save Changes
+</button>
+
+</div>
+
+<!-- SETTINGS -->
+<div class="card bg-white border border-blue-100 rounded-xl p-6 shadow">
+
+<h2 class="text-lg font-semibold text-navy mb-4">
+  Settings ⚙️
+</h2>
+
+<div class="flex justify-between items-center mb-4">
+  <p>Email Notifications</p>
+  <input type="checkbox">
+</div>
+
+<div class="flex justify-between items-center mb-4">
+  <p>Dark Mode</p>
+  <input type="checkbox">
+</div>
+
+<button class="btn mt-4 text-red-500">
+  Logout
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+lucide.createIcons();
+
+function go(p){
+  window.location.href = p;
+}
+</script>
+
+</body>
+</html>

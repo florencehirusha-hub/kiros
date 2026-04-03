@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kairos - Results</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy:"#0B1F3A",
+        navySoft:"#1E3A8A",
+        blueAccent:"#3B82F6",
+        blueLight:"#93C5FD",
+        blueBg:"#EFF6FF"
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.card {
+  transition:0.3s;
+}
+.card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 15px 30px rgba(59,130,246,0.2);
+}
+
+.btn {
+  transition:0.3s;
+}
+.btn:hover {
+  transform:scale(1.05);
+}
+
+.progress-bar {
+  background: linear-gradient(to right,#1E3A8A,#3B82F6);
+}
+
+.logo {
+  animation: float 3s infinite;
+}
+@keyframes float {
+  50% { transform: translateY(-5px); }
+}
+</style>
+
+</head>
+
+<body class="bg-white">
+
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<div class="w-64 bg-navy text-white p-5 flex flex-col justify-between">
+
+<div>
+  <div class="flex items-center gap-3 mb-10">
+    <img src="delta-strix-logo.png" class="logo w-12 h-12">
+    <div>
+      <h1 class="text-xl font-bold">Kairos</h1>
+      <p class="text-xs text-blueLight">AI Career Guide</p>
+    </div>
+  </div>
+
+  <div class="space-y-3">
+
+    <div onclick="go('index.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg cursor-pointer flex gap-2">
+      <i data-lucide="home"></i> Home
+    </div>
+
+    <div class="p-3 bg-navySoft rounded-lg flex gap-2">
+      <i data-lucide="bar-chart"></i> Results
+    </div>
+
+    <div onclick="go('research.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg cursor-pointer flex gap-2">
+      <i data-lucide="book-open"></i> Research
+    </div>
+
+    <div onclick="go('progress.html')" class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg cursor-pointer flex gap-2">
+      <i data-lucide="clock"></i> Progress
+    </div>
+
+    <div class="p-3 text-blueLight hover:bg-[#102A54] rounded-lg flex gap-2">
+      <i data-lucide="user"></i> My Account
+    </div>
+
+  </div>
+</div>
+
+<div class="text-blueLight text-sm flex gap-2">
+  <i data-lucide="bookmark"></i> Saved Careers
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="flex-1 p-10">
+
+<!-- HEADER -->
+<h1 class="text-4xl font-bold text-navy mb-2">
+  Your Career Matches 🎯
+</h1>
+<p class="text-gray-500 mb-8">
+  Personalized results based on your academic profile and interests
+</p>
+
+<!-- FILTER BAR -->
+<div class="flex justify-between items-center mb-6">
+
+<div class="flex gap-3">
+  <button class="btn px-4 py-2 rounded-lg bg-navySoft text-white flex gap-2 items-center">
+    <i data-lucide="trending-up"></i> High Demand
+  </button>
+
+  <button class="btn px-4 py-2 rounded-lg bg-blueBg text-navy flex gap-2 items-center">
+    <i data-lucide="star"></i> Best Match
+  </button>
+</div>
+
+<div class="flex gap-3">
+  <input placeholder="Search careers..." class="px-4 py-2 border border-blue-200 rounded-lg w-64">
+
+  <select class="px-4 py-2 border border-blue-200 rounded-lg">
+    <option>All Categories</option>
+    <option>IT</option>
+    <option>Business</option>
+    <option>Engineering</option>
+  </select>
+</div>
+
+</div>
+
+<!-- CARDS -->
+<div class="grid grid-cols-3 gap-6">
+
+<!-- SOFTWARE ENGINEER -->
+<div class="card bg-white border border-blue-100 p-6 rounded-xl shadow">
+
+<h2 class="text-xl font-bold text-navy mb-2">
+  💻 Software Engineer
+</h2>
+
+<span class="bg-blueBg text-navy px-3 py-1 rounded-full text-sm">
+  ⭐ 92% Match
+</span>
+
+<div class="w-full bg-gray-200 h-2 rounded mt-3 mb-4">
+  <div class="progress-bar h-2 rounded" style="width:92%"></div>
+</div>
+
+<div class="text-gray-600 text-sm space-y-2 mb-4">
+  <p>🎓 Bachelor's Degree</p>
+  <p>⏳ Entry Level (0–1 yrs)</p>
+  <p>💰 Rs. 100K – 1.5M / year</p>
+</div>
+
+<button onclick="openResearch('Software Engineer')" 
+class="btn w-full bg-blueAccent text-white py-2 rounded-lg">
+  View Details →
+</button>
+
+</div>
+
+<!-- BUSINESS ANALYST -->
+<div class="card bg-white border border-blue-100 p-6 rounded-xl shadow">
+
+<h2 class="text-xl font-bold text-navy mb-2">
+  📊 Business Analyst
+</h2>
+
+<span class="bg-blueBg text-navy px-3 py-1 rounded-full text-sm">
+  ⭐ 86% Match
+</span>
+
+<div class="w-full bg-gray-200 h-2 rounded mt-3 mb-4">
+  <div class="progress-bar h-2 rounded" style="width:86%"></div>
+</div>
+
+<div class="text-gray-600 text-sm space-y-2 mb-4">
+  <p>🎓 Bachelor's Degree</p>
+  <p>⏳ Entry Level (0–2 yrs)</p>
+  <p>💰 Rs. 80K – 1.5M / year</p>
+</div>
+
+<button onclick="openResearch('Business Analyst')" 
+class="btn w-full bg-blueAccent text-white py-2 rounded-lg">
+  View Details →
+</button>
+
+</div>
+
+<!-- ELECTRICAL ENGINEER -->
+<div class="card bg-white border border-blue-100 p-6 rounded-xl shadow">
+
+<h2 class="text-xl font-bold text-navy mb-2">
+  ⚡ Electrical Engineer
+</h2>
+
+<span class="bg-blueBg text-navy px-3 py-1 rounded-full text-sm">
+  ⭐ 82% Match
+</span>
+
+<div class="w-full bg-gray-200 h-2 rounded mt-3 mb-4">
+  <div class="progress-bar h-2 rounded" style="width:82%"></div>
+</div>
+
+<div class="text-gray-600 text-sm space-y-2 mb-4">
+  <p>🎓 Bachelor's Degree</p>
+  <p>⏳ Entry Level (0–1 yrs)</p>
+  <p>💰 Rs. 70K – 2.5M / year</p>
+</div>
+
+<button onclick="openResearch('Electrical Engineer')" 
+class="btn w-full bg-blueAccent text-white py-2 rounded-lg">
+  View Details →
+</button>
+
+</div>
+
+</div>
+
+<!-- RETAKE -->
+<div class="flex justify-center mt-10">
+<button onclick="go('index.html')" 
+class="btn px-6 py-3 border border-blue-200 rounded-lg flex gap-2 text-navy">
+  <i data-lucide="refresh-ccw"></i>
+  Retake Analysis
+</button>
+</div>
+
+</div>
+
+</div>
+
+<script>
+lucide.createIcons();
+
+function go(p){
+  window.location.href = p;
+}
+
+function openResearch(job){
+  localStorage.setItem("selectedCareer", job);
+  window.location.href = "research.html";
+}
+</script>
+
+</body>
+</html>
