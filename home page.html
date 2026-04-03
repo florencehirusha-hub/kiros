@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kairos AI</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: "#0B1F3A",
+        navySoft: "#1E3A8A",
+        blueAccent: "#3B82F6",
+        blueLight: "#93C5FD",
+        blueBg: "#EFF6FF",
+      }
+    }
+  }
+}
+</script>
+
+<style>
+/* CARD HOVER */
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.02);
+  transition: 0.3s ease;
+}
+
+/* BUTTON GLOW */
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(59,130,246,0.6);
+}
+
+/* SIDEBAR NAV */
+.nav-item {
+  transition: 0.25s ease;
+}
+.nav-item:hover {
+  transform: translateX(6px);
+}
+
+/* 🔥 LOGO ANIMATION */
+.logo {
+  animation: float 3s ease-in-out infinite, glow 2.5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.15) rotate(3deg);
+}
+
+/* Floating effect */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Glow pulse */
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(59,130,246,0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(59,130,246,0.9));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(59,130,246,0.4));
+  }
+}
+</style>
+
+</head>
+
+<body class="bg-white">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <div class="w-64 bg-navy text-white flex flex-col p-5 justify-between animate__animated animate__fadeInLeft">
+
+    <div>
+
+      <!-- 🔥 ANIMATED LOGO -->
+      <div class="mb-10 flex items-center gap-3">
+
+        <img 
+          src="delta-strix-logo.png" 
+          alt="Kairos Logo" 
+          class="logo w-12 h-12 object-contain"
+        />
+
+        <div>
+          <h1 class="text-2xl font-bold">Kairos</h1>
+          <p class="text-xs text-blueLight">by Delta Strix</p>
+        </div>
+
+      </div>
+
+      <!-- NAV -->
+      <div class="space-y-3">
+        <div class="nav-item flex items-center gap-3 p-3 rounded-lg bg-navySoft">
+          <i data-lucide="home"></i> Home
+        </div>
+
+        <div class="nav-item flex items-center gap-3 p-3 rounded-lg text-blueLight hover:bg-[#102A54]">
+          <i data-lucide="bar-chart"></i> Results
+        </div>
+
+       <div class="nav-item flex items-center gap-3 p-3 rounded-lg text-blueLight hover:bg-[#102A54]">
+          <i data-lucide="file-text"></i> Your Dashboard
+        </div>
+
+        <div class="nav-item flex items-center gap-3 p-3 rounded-lg text-blueLight hover:bg-[#102A54]">
+          <i data-lucide="book-open"></i> Research
+        </div>
+
+        <div class="nav-item flex items-center gap-3 p-3 rounded-lg text-blueLight hover:bg-[#102A54]">
+          <i data-lucide="clock"></i> Progress
+        </div>
+      </div>
+    </div>
+
+    <div class="text-sm text-blueLight flex items-center gap-2">
+      <i data-lucide="bookmark"></i> Saved Careers
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="flex-1 p-10">
+
+    <!-- HEADER -->
+    <div class="animate__animated animate__fadeInUp">
+      <h1 class="text-4xl font-bold text-navy mb-3">
+        Discover Your Future Career
+      </h1>
+      <p class="text-gray-500 mb-8">
+        Enter your academic performance to get AI-powered career recommendations
+      </p>
+    </div>
+
+    <!-- INPUT -->
+    <div class="animate__animated animate__fadeInUp animate__delay-1s mb-10">
+
+      <div class="bg-blueBg border border-blue-200 rounded-xl p-6 shadow-sm">
+
+        <h2 class="text-lg font-semibold text-navy mb-4">
+          Enter Your Results
+        </h2>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+
+          <select class="p-3 rounded-lg border border-blue-200 bg-white">
+            <option>Select Stream</option>
+            <option>Science</option>
+            <option>Commerce</option>
+            <option>Arts</option>
+          </select>
+
+          <select class="p-3 rounded-lg border border-blue-200 bg-white">
+            <option>Math Level</option>
+            <option>Basic</option>
+            <option>Advanced</option>
+          </select>
+
+        </div>
+
+        <input
+          type="text"
+          placeholder="Enter results (e.g. A-7, B-1, C-1)"
+          class="w-full p-4 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blueAccent"
+        />
+
+        <p class="text-xs text-gray-500 mt-2">
+          Example: A-7 means 7 A passes, B-1 means 1 B pass
+        </p>
+
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+    <div class="animate__animated animate__fadeInUp animate__delay-1s mb-12">
+      <button class="btn-glow px-8 py-4 rounded-xl text-white font-semibold bg-gradient-to-r from-navySoft to-blueAccent flex items-center gap-2">
+        <i data-lucide="sparkles"></i>
+        Generate Results
+      </button>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="grid grid-cols-3 gap-6 animate__animated animate__fadeInUp animate__delay-2s">
+
+      <div class="card-hover bg-white border border-blue-100 rounded-xl p-6 shadow-md">
+        <i data-lucide="user" class="text-blueAccent mb-3"></i>
+        <h3 class="text-lg font-semibold text-navy">Personalized</h3>
+        <p class="text-gray-500 text-sm">Tailored to your profile</p>
+      </div>
+
+      <div class="card-hover bg-white border border-blue-100 rounded-xl p-6 shadow-md">
+        <i data-lucide="map-pin" class="text-blueAccent mb-3"></i>
+        <h3 class="text-lg font-semibold text-navy">Sri Lanka Focused</h3>
+        <p class="text-gray-500 text-sm">Local data & opportunities</p>
+      </div>
+
+      <div class="card-hover bg-white border border-blue-100 rounded-xl p-6 shadow-md">
+        <i data-lucide="rocket" class="text-blueAccent mb-3"></i>
+        <h3 class="text-lg font-semibold text-navy">Long-Term Growth</h3>
+        <p class="text-gray-500 text-sm">Track your journey over time</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>
